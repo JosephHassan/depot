@@ -11,3 +11,10 @@ two:
   description: MyText
   image_url: MyString
   price: 9.99
+
+ruby:
+  title: Ruby Programming for Newbies
+  description: Ruby is such a facinating language and the Rails platform is evern more amazing
+  image_url: ruby.jpg
+  price: 24.56
+  
