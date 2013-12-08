@@ -8,6 +8,9 @@ class Product < ActiveRecord::Base
   # insure that there are no duplicate products with the same name
   validates :title, uniqueness: true
   
+  # insure proper title length
+  validates_length_of :title, minimum: 10, too_short: "Joseph Says Product title must contain at least 10 characters"
+  
   # insure the user provide a valid image extension
   validates :image_url, allow_blank: true, format: { 
         with: %r{\.(gif|jpg|png)\Z}i,
