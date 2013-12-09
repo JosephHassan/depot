@@ -1,0 +1,9 @@
+--- 
+cursor_positions: 
+  - :path: app/models/product.rb
+    :cursor_offset: 312
+    :timestamp: 2013-12-08 08:18:30 -08:00
+  - :path: app/views/store/index.html.erb
+    :cursor_offset: 0
+    :timestamp: 2013-12-08 09:05:10 -08:00
+files_to_retain: 0
