@@ -1,6 +1,10 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
+  # in case the user maliciously typed the URL with an invalid Cart ID, 
+  # we don't want to show the application code, instead, we would want it
+  # logged and then we can redirect the user to the store's main page
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  
   # GET /carts
   # GET /carts.json
   def index
@@ -70,5 +74,10 @@ class CartsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
       params[:cart]
+    end
+    
+    def invalid_cart
+      logger.error "Attempted to access an invalid Cart ID #{params[:id]}"
+      redirect_to store_url, notice: 'Invalid Cart'
     end
 end
