@@ -3,13 +3,16 @@ class Cart < ActiveRecord::Base
   
   # function to add products to the cart while keeping in mind that the product may 
   # already exist and hence only need to increment quantity
-  def add_product(product_id)
-    #current_item = line_items.find(product_id: product_id)
+  def add_product(product_id, product_price)
+
     current_item = line_items.find_by(product_id: product_id)
     if current_item
       current_item.quantity += 1
+      current_item.price = product_price
     else
-      current_item = line_items.build(product_id: product_id)
+      #current_item = line_items.build(product_id: product_id)
+      current_item = LineItem.new(:product_id => product_id, :price => product_price)
+      line_items << current_item
     end
     return current_item
   end

@@ -29,7 +29,7 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     #@line_item = @cart.line_items.build(product: product)
-    @line_item = @cart.add_product(product.id)
+    @line_item = @cart.add_product(product.id, product.price)
     
     respond_to do |format|
       if @line_item.save
