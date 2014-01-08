@@ -1,5 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:create, :update, :destroy]
   # in case the user maliciously typed the URL with an invalid Cart ID, 
   # we don't want to show the application code, instead, we would want it
   # logged and then we can redirect the user to the store's main page
