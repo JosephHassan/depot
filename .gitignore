@@ -17,3 +17,4 @@
 
 # Ignore all redcar IDE files
 .redcar
+.idea
